@@ -19,6 +19,7 @@ $(document).on("turbolinks:load", () => {
   //search function
   searchData = (td_index, input, filter, table, tr) => {
     countresult = 0;
+    highlightletter(input, table);
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[td_index];
       if (td) {
@@ -37,6 +38,13 @@ $(document).on("turbolinks:load", () => {
       }
     }
   }
+  //highlight search
+  highlightletter = (input, table) => {
+    let myHilitor2 = new Hilitor(table);
+    myHilitor2.setMatchType("open");
+    myHilitor2.apply(input.value);
+  };
+
   //Date Format
   formatDate = (date) => {
     var monthNames = [
